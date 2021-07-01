@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: basic-service
+  jackson:
+   date-format: yyyy-MM-dd HH:mm:ss
+   time-zone: GMT+8
+
+
+server:
+  port: 8111
+mybatis:
+    type-aliases-package: com.cm.cloud.basic.intf.pojo
+    #驼峰
+    configuration:
+      map-underscore-to-camel-case: true
+    mapper-locations: classpath:mysql/*.xml
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+mapper:
+    mappers:
+        - com.cm.cloud.commons.db.CommonMapper
+    not-empty: false
+    identity: MYSQL
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        exclude: flyway

@@ -1,0 +1,15 @@
+<li class="header">功能导航</li>
+<!-- Optionally, you can add icons to the links -->
+<div th:replace="::menus (${modules})"  th:remove="tag"></div>
+<div th:fragment="menus (ms)" th:remove="tag">
+    <li th:class="treeview" th:each="menu : ${ms}">
+        <a th:href="@{${menu.module_url}}">
+            <i th:class="${'fa '+menu.css_icon}"></i> <span th:text="${menu.module_name}"></span>
+            <span th:if="${not #lists.isEmpty(menu.children)}" class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul th:if="${not #lists.isEmpty(menu.children)}" class="treeview-menu" th:include="::menus (${menu.children})">
+        </ul>
+    </li>
+</div>

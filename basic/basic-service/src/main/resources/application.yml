@@ -1,0 +1,85 @@
+---
+spring:
+  profiles : dev
+  redis:
+    database: 8
+    host: 121.40.90.218
+    port: 19736
+    password:
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 100
+        min-idle: 0
+        max-wait: -1
+  datasource:
+    name: basic
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://121.40.90.218:3306/test-basic?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: Sbtdb889900Zaq123edC
+    driver-class-name: com.mysql.jdbc.Driver
+    minIdle: 3
+    maxActive: 50
+    initialSize: 10
+    timeBetweenEvictionRunsMillis: 3000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 1
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: true
+  jackson:
+    default-property-inclusion: non_null
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+development: dev
+
+logging:
+  level:
+    tk.mybatis: TRACE
+    root: debug
+    com.ailihan: trace
+
+---
+spring:
+  profiles : test
+  datasource:
+    name: basic
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://cdb-a6qng4qq.cd.tencentcdb.com:10022/ailihan?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: Yizhi@2019
+    driver-class-name: com.mysql.jdbc.Driver
+    minIdle: 3
+    maxActive: 50
+    initialSize: 10
+    timeBetweenEvictionRunsMillis: 3000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 1
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: true
+  jackson:
+    default-property-inclusion: non_null
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+development: test
+
+logging:
+  level:
+    tk.mybatis: TRACE
+    root: info
+    com.ailihan: trace
+  file:
+    max-history: 7
+logging.file: /data/servers/${spring.application.name}/${spring.application.name}.log

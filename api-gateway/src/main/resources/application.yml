@@ -1,0 +1,23 @@
+---
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+---
+spring:
+  profiles: test
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+logging:
+  level:
+    tk.mybatis: TRACE
+    root: info
+    com.ailihan: trace
+  file:
+    max-history: 7
+logging.file: /data/servers/logs/${spring.application.name}/${spring.application.name}.log

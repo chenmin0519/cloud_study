@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      th:with="static_url=${#ctx.servletContext.getInitParameter('static_url')}">
+<head th:include="fragments/headTag :: headTag"/>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <!-- header区域 -->
+    <span th:include="fragments/headerTag" th:remove="tag"/>
+    <!-- 左导航栏 -->
+    <span th:include="fragments/leftSidebar" th:remove="tag"/>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                主页
+                <small>更快的了解和操作系统</small>
+            </h1>
+            <!-- <ol class="breadcrumb">
+                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                 <li class="active">Here</li>
+             </ol>-->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            1.实现最常用的快捷方式<br/>
+            2.实现个性化信息显示<br/>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- 页脚 -->
+    <span th:include="fragments/footerTag" th:remove="tag"/>
+
+    <!-- 控制面板 -->
+    <!--<span th:include="fragments/controlSidebar" th:remove="tag"/>-->
+</div>
+
+<script th:src="@{${static_url+'/alte/dist/js/app.min.js'}}"></script>
+</body>
+</html>

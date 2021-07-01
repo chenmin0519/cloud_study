@@ -1,0 +1,191 @@
+---
+spring:
+  profiles : dev
+  redis:
+    database: 8
+    port: 6379
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+#eureka:
+#  client:
+#    register-with-eureka: false
+#    service-url:
+#      defaultZone: http://192.168.19.21:8761/eureka,http://192.168.19.21:8762/eureka
+
+logging:
+  level:
+    org.springframework.security: debug
+server:
+  context-parameters:
+    gateway-path: http://localhost:8830/se/
+oauth2:
+  clients:
+    mobile-client:
+      client-secret: mobile
+      resource-ids: mobile-resource
+      scope: openid,read,write
+      authorized-grant-types: password,refresh_token
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 86400
+      autoapprove: false
+    ai-travel-app:
+      client-secret: a9d54d2a-7c81-409b-8ae8-eccbfe950177
+      resource-ids:
+      scope: openid,read,write
+      authorized-grant-types: authorization_code,refresh_token,implicit,password
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
+    swagger:
+      client-secret: swagger
+      resource-ids:
+      scope: openid,read,write
+      authorized-grant-types: authorization_code,refresh_token,implicit,password
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
+    unity-client:
+      client-secret: unity
+      resource-ids: unity-resource
+      scope: openid,read,write
+      authorized-grant-types: authorization_code,refresh_token,implicit,password
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
+---
+spring:
+  profiles : test
+  redis:
+    database: 8
+    host: 192.168.19.20
+    port: 6379
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 100
+        min-idle: 0
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://192.168.19.21:8761/eureka,http://192.168.19.21:8762/eureka
+
+server:
+  context-parameters:
+    gateway-path: http://192.168.19.22:8840/se/
+oauth2:
+  clients:
+    mobile-client:
+      client-secret: mobile
+      resource-ids: mobile-resource
+      scope: openid,read,write
+      authorized-grant-types: password,refresh_token
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
+      autoapprove: false
+    ai-travel-app:
+      client-secret: a9d54d2a-7c81-409b-8ae8-eccbfe950177
+      resource-ids:
+      scope: openid,read,write
+      authorized-grant-types: authorization_code,refresh_token,implicit,password
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
+    swagger:
+      client-secret: swagger
+      resource-ids:
+      scope: openid,read,write
+      authorized-grant-types: authorization_code,refresh_token,implicit,password
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
+    unity-client:
+      client-secret: unity
+      resource-ids: unity-resource
+      scope: openid,read,write
+      authorized-grant-types: authorization_code,refresh_token,implicit,password
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
+logging:
+  level:
+    root: info
+    org.springframework.security: debug
+  file:
+    max-history: 7
+logging.file: ${spring.application.name}/${spring.application.name}.log
+
+---
+spring:
+  profiles : prod
+  redis:
+    database: 8
+    host: r-wz91cb6a90f5eea4.redis.rds.aliyuncs.com
+    port: 6379
+    password: a9yaTih7
+    timeout: PT5S
+    jedis:
+      pool:
+        max-active: 300
+        max-idle: 100
+        min-idle: 0
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://172.18.54.30:8761/eureka,http://172.18.54.29:8761/eureka
+server:
+  context-parameters:
+    gateway-path: http://aiapi.huiqulx.com/se/
+logging:
+  level:
+    root: info
+  file:
+    max-history: 7
+logging.file: /home/apps/logs/${spring.application.name}.log
+
+oauth2:
+  clients:
+    mobile-client:
+      client-secret: mobile
+      resource-ids: mobile-resource
+      scope: openid,read,write
+      authorized-grant-types: password,refresh_token
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
+      autoapprove: false
+    ai-travel-app:
+      client-secret: a9d54d2a-7c81-409b-8ae8-eccbfe950177
+      resource-ids:
+      scope: openid,read,write
+      authorized-grant-types: authorization_code,refresh_token,implicit,password
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
+    swagger:
+      client-secret: swagger
+      resource-ids:
+      scope: openid,read,write
+      authorized-grant-types: authorization_code,refresh_token,implicit,password
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
+    unity-client:
+      client-secret: unity
+      resource-ids: unity-resource
+      scope: openid,read,write
+      authorized-grant-types: authorization_code,refresh_token,implicit,password
+      authorities: ROLE_CLIENT
+      access-token-validity-seconds: 86400
+      refresh-token-validity-seconds: 129600
