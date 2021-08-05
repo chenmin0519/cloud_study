@@ -13,6 +13,7 @@
         <module>authorization</module>
         <module>basic</module>
         <module>constant</module>
+        <module>study</module>
     </modules>
     <name>cloud-study</name>
     <description>顶级pom</description>
